@@ -10,6 +10,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm
+
 def user_login(request):
     if request.method == 'POST': #if the request made is a post request
         form = LoginForm(request.POST)
