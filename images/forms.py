@@ -13,7 +13,7 @@ class ImageCreateForm(forms.ModelForm):
         }
 
     def clean_url(self):
-        url self.cleaned_data["url"]
+        url = self.cleaned_data["url"]
         valid_extentions = ["jpg", "jpeg"]
         extension = url.rsplit(".", 1)[1].lower()
 
@@ -23,7 +23,7 @@ class ImageCreateForm(forms.ModelForm):
         return url
 
     def save(self, commit=True, force_insert=False, force_update=False):
-        image = super(ImageCreateForm, self).super(commit=False)
+        image = super(ImageCreateForm, self).save(commit=False)
         image_url = self.cleaned_data["url"]
         image_ext = image_url.rsplit(".", 1)[1].lower()
         image_name = "{}.{}".format(slugify(image.title), image_ext)
